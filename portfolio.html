@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#e0f2fe" media="(prefers-color-scheme: light)">
     <title>Priyanshu Mitra | AI & ML Specialist Portfolio</title>
     <!-- Social Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* ========== DARK THEME (default) ========== */
         :root {
-            --bg-color: #0a0a0a;
+            --page-bg: #0a0a0a;
             --card-bg: #161616;
             --text-main: #ffffff;
             --text-dim: #a0a0a0;
@@ -16,47 +20,85 @@
             --accent-red: #f87171;
             --accent-blue: #60a5fa;
             --border: #262626;
+            --line: #222222;
+            --chip-bg: #1a1a1a;
+            --hover-border: #444444;
+            --img-bg: #222222;
+            --glow: rgba(96, 165, 250, 0.2);
+            --cta-from: #111111;
+            --cta-to: #050505;
+            --footer-text: #666666;
+            --btn-text: #000000;
+            --btn-hover-bg: #ffffff;
+            --btn-hover-text: #000000;
+        }
+
+        /* ========== LIGHT THEME (light sky shade) ========== */
+        @media (prefers-color-scheme: light) {
+            :root {
+                --page-bg: linear-gradient(180deg, #e0f2fe 0%, #f0f9ff 100%);
+                --card-bg: #ffffff;
+                --text-main: #0f172a;
+                --text-dim: #475569;
+                --accent-green: #16a34a;
+                --accent-red: #dc2626;
+                --accent-blue: #0284c7;
+                --border: #bae6fd;
+                --line: #e0f2fe;
+                --chip-bg: #f0f9ff;
+                --hover-border: #7dd3fc;
+                --img-bg: #e0f2fe;
+                --glow: rgba(2, 132, 199, 0.25);
+                --cta-from: #e0f2fe;
+                --cta-to: #bae6fd;
+                --footer-text: #64748b;
+                --btn-text: #ffffff;
+                --btn-hover-bg: #0f172a;
+                --btn-hover-text: #ffffff;
+            }
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
-        
-        body { 
-            background-color: var(--bg-color); 
-            color: var(--text-main); 
-            line-height: 1.6; 
-            padding: 20px; 
+
+        body {
+            background: var(--page-bg);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
         }
 
         .container { max-width: 1150px; margin: 0 auto; }
 
         /* Profile Header */
         .profile-header { text-align: center; margin-bottom: 40px; padding-top: 20px; }
-        .profile-img { 
-            width: 200px; height: 200px; border-radius: 50%; 
-            border: 4px solid var(--accent-blue); object-fit: cover; 
-            margin-bottom: 20px; background: #222;
-            box-shadow: 0 0 30px rgba(96, 165, 250, 0.2);
+        .profile-img {
+            width: 200px; height: 200px; border-radius: 50%;
+            border: 4px solid var(--accent-blue); object-fit: cover;
+            margin-bottom: 20px; background: var(--img-bg);
+            box-shadow: 0 0 30px var(--glow);
         }
 
-        header h1 { 
-            font-size: 2.8rem; font-weight: 900; text-transform: uppercase; 
-            letter-spacing: -1px; border-bottom: 2px solid var(--border); 
-            padding-bottom: 10px; margin-bottom: 30px; 
+        header h1 {
+            font-size: 2.8rem; font-weight: 900; text-transform: uppercase;
+            letter-spacing: -1px; border-bottom: 2px solid var(--border);
+            padding-bottom: 10px; margin-bottom: 30px;
         }
 
         /* Layout Grids */
         .grid-main { display: grid; grid-template-columns: 2fr 1.2fr; gap: 20px; margin-bottom: 30px; }
         .grid-three { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 30px; }
-        
-        .card { 
-            background: var(--card-bg); border: 1px solid var(--border); 
-            padding: 25px; border-radius: 12px; position: relative; 
-            transition: transform 0.3s ease, border-color 0.3s ease; 
-        }
-        .card:hover { transform: translateY(-5px); border-color: #444; }
 
-        h2 { 
-            text-transform: uppercase; font-size: 1.1rem; margin-bottom: 20px; 
+        .card {
+            background: var(--card-bg); border: 1px solid var(--border);
+            padding: 25px; border-radius: 12px; position: relative;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .card:hover { transform: translateY(-5px); border-color: var(--hover-border); }
+
+        h2 {
+            text-transform: uppercase; font-size: 1.1rem; margin-bottom: 20px;
             letter-spacing: 1px; color: var(--text-dim); border-left: 3px solid var(--accent-blue);
             padding-left: 10px;
         }
@@ -67,7 +109,7 @@
         /* Typography & Lists */
         .summary-text { color: var(--text-dim); font-size: 1.05rem; text-align: justify; }
         .details-list { list-style: none; font-size: 0.95rem; }
-        .details-list li { margin-bottom: 12px; border-bottom: 1px solid #222; padding-bottom: 5px; }
+        .details-list li { margin-bottom: 12px; border-bottom: 1px solid var(--line); padding-bottom: 5px; }
         .details-list b { color: var(--accent-blue); margin-right: 8px; }
 
         .edu-item h4 { color: var(--accent-blue); margin-top: 15px; }
@@ -78,9 +120,9 @@
 
         /* Skills Chips */
         .skills-container { display: flex; flex-wrap: wrap; gap: 10px; }
-        .skill-chip { 
-            background: #1a1a1a; padding: 6px 14px; border-radius: 6px; 
-            font-size: 0.85rem; border: 1px solid var(--border); color: #fff; 
+        .skill-chip {
+            background: var(--chip-bg); padding: 6px 14px; border-radius: 6px;
+            font-size: 0.85rem; border: 1px solid var(--border); color: var(--text-main);
         }
 
         /* Leadership & Projects */
@@ -95,18 +137,29 @@
         .project-name { color: var(--accent-green); font-weight: bold; font-size: 1.1rem; display: block; margin-bottom: 8px; }
 
         /* CTA Footer */
-        .cta-box { 
-            background: linear-gradient(145deg, #111, #050505); 
-            text-align: center; padding: 60px 20px; border-radius: 12px; 
-            margin-top: 60px; border: 1px solid var(--border); 
+        .cta-box {
+            background: linear-gradient(145deg, var(--cta-from), var(--cta-to));
+            text-align: center; padding: 60px 20px; border-radius: 12px;
+            margin-top: 60px; border: 1px solid var(--border);
+        }
+        .cta-actions {
+            display: flex; flex-wrap: wrap; justify-content: center;
+            gap: 15px; margin-bottom: 30px;
         }
         .cta-btn {
-            display: inline-block; background: var(--accent-blue); color: #000;
+            display: inline-block; background: var(--accent-blue); color: var(--btn-text);
             padding: 14px 35px; border-radius: 8px; text-decoration: none;
-            font-weight: bold; font-size: 1rem; margin-bottom: 30px;
+            font-weight: bold; font-size: 1rem;
             transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;
+            border: 2px solid var(--accent-blue);
         }
-        .cta-btn:hover { background: #fff; transform: scale(1.05); box-shadow: 0 0 20px rgba(96, 165, 250, 0.5); }
+        .cta-btn:hover {
+            background: var(--btn-hover-bg); color: var(--btn-hover-text);
+            border-color: var(--btn-hover-bg);
+            transform: scale(1.05); box-shadow: 0 0 20px var(--glow);
+        }
+        .cta-btn.secondary { background: transparent; color: var(--accent-blue); }
+        .cta-btn.secondary:hover { background: var(--btn-hover-bg); color: var(--btn-hover-text); }
         .cta-subtext { color: var(--text-dim); max-width: 700px; margin: 0 auto 25px auto; font-size: 1.1rem; }
 
         .social-links a { color: var(--text-main); font-size: 2.2rem; margin: 0 20px; transition: 0.3s; }
@@ -121,7 +174,7 @@
 <body>
 
 <div class="container">
-    
+
     <div class="profile-header">
         <img id="img-me" src="images/me.jpg" alt="Priyanshu Mitra" class="profile-img">
         <h1 style="border:none; margin-bottom:0; font-size: 3rem;">Priyanshu Mitra</h1>
@@ -135,7 +188,7 @@
         <div class="card">
             <h2>Professional Summary</h2>
             <p class="summary-text">
-                I am a B.Tech student specializing in <b>Artificial Intelligence and Machine Learning</b> at the Institute of Engineering and Management (IEM), Kolkata. I focus on building practical, real-world solutions using computer vision and natural language processing, with projects such as real-time face detection with emotion analysis and sentiment classification systems. Alongside my technical work, I actively take on leadership roles, managing teams and organizing large-scale events across student organizations. I aim to develop intelligent systems that bridge technology and human interaction while continuously expanding my expertise in AI and data-driven solutions.
+                I am a B.Tech student specializing in <b>Artificial Intelligence and Machine Learning</b> at the Institute of Engineering and Management (IEM), Kolkata. I am most comfortable working in <b>Python, C and SQL</b>, and I use them to build practical, real-world solutions in computer vision and natural language processing, with projects such as real-time face detection with emotion analysis and sentiment classification systems. Alongside my technical work, I actively take on leadership roles, managing teams and organizing large-scale events across student organizations. I aim to develop intelligent systems that bridge technology and human interaction while continuously expanding my expertise in AI and data-driven solutions.
             </p>
         </div>
         <div class="card">
@@ -157,7 +210,7 @@
             <h2>Education</h2>
             <div class="edu-item">
                 <h4>B.Tech AI & ML</h4>
-                <p class="edu-sub">IEM Kolkata | 2nd Year | CGPA: 8.3</p>
+                <p class="edu-sub">IEM Kolkata | 3rd Year | CGPA: 8.2</p>
             </div>
             <div class="edu-item">
                 <h4>Class 12 (CBSE)</h4>
@@ -181,7 +234,7 @@
         <div class="card">
             <h2 style="color: var(--accent-red); border-color: var(--accent-red);">Growth Areas</h2>
             <div class="list-item"><span class="dot" style="background:var(--accent-red)"></span> Advanced ML Concepts</div>
-            <div class="list-item"><span class="dot" style="background:var(--accent-red)"></span> Deep Tech Implementation</div>
+            <div class="list-item"><span class="dot" style="background:var(--accent-red)"></span> Deep Learning</div>
             <div class="list-item"><span class="dot" style="background:var(--accent-red)"></span> Time Management</div>
         </div>
     </div>
@@ -233,11 +286,11 @@
             <img id="img-ignitia" src="images/ignitia-logo.jpg" class="logo-box" alt="IGNITIA">
             <span class="role-title">Convenor</span>
             <span class="role-org">IGNITIA (Techno-Cultural Fest)</span>
-            <span class="role-date">Present</span>
+            <span class="role-date">Jun 2026 – Aug 2026</span>
             <ul class="role-bullets">
-                <li>Leading the overall planning and execution of the fest</li>
-                <li>Managing hackathons and gaming competitions</li>
-                <li>Coordinating logistics, teams, and participants</li>
+                <li>Led the overall planning and execution of the fest</li>
+                <li>Managed hackathons and gaming competitions</li>
+                <li>Coordinated logistics, teams, and participants</li>
             </ul>
         </div>
         <div class="card">
@@ -272,7 +325,7 @@
                 <p style="font-size:0.8rem; color:var(--accent-blue); margin-bottom:5px">Languages & Web</p>
                 <div class="skills-container">
                     <span class="skill-chip">Python (Advanced)</span><span class="skill-chip">C</span>
-                    <span class="skill-chip">Java (Learning)</span><span class="skill-chip">HTML</span><span class="skill-chip">DBMS</span>
+                    <span class="skill-chip">SQL</span><span class="skill-chip">HTML</span><span class="skill-chip">Java (Learning)</span>
                 </div>
             </div>
             <div>
@@ -292,30 +345,38 @@
             </ul>
             <h2 style="margin-top:20px;">Hobbies</h2>
             <div class="skills-container">
-                <span class="skill-chip">🎭 Acting</span><span class="skill-chip">🎬 Content</span>
-                <span class="skill-chip">🎤 Singing</span><span class="skill-chip">✍️ Scripting</span>
+                <span class="skill-chip">🎥 Content Creation</span>
+                <span class="skill-chip">🎭 Acting</span>
+                <span class="skill-chip">🎤 Singing</span>
+                <span class="skill-chip">✍️ Scripting</span>
             </div>
         </div>
     </div>
 
     <!-- FINAL CTA FOOTER -->
     <div class="cta-box">
-        <h3 style="font-size: 2rem; margin-bottom: 10px; color: #fff;">Let's build the future of AI together.</h3>
+        <h3 style="font-size: 2rem; margin-bottom: 10px; color: var(--text-main);">Let's build the future of AI together.</h3>
         <p class="cta-subtext">
-            I am currently open to <b>internship opportunities</b> and <b>collaborative AI/ML projects</b>. 
+            I am currently open to <b>internship opportunities</b> and <b>collaborative AI/ML projects</b>.
             If you're looking for a dedicated developer or want to discuss technology, let's connect.
         </p>
-        
-        <a href="mailto:priyanshumitra85@gmail.com" class="cta-btn">Get In Touch</a>
+
+        <div class="cta-actions">
+            <!-- Opens Gmail compose directly, addressed to you -->
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=priyanshumitra85@gmail.com&su=Hello%20Priyanshu%20-%20Portfolio%20Enquiry"
+               target="_blank" rel="noopener" class="cta-btn">Get In Touch</a>
+            <!-- GitHub profile -->
+            <a href="https://github.com/priyanshumitrapm" target="_blank" rel="noopener" class="cta-btn secondary">View GitHub</a>
+        </div>
 
         <div class="social-links">
-            <a href="https://github.com/priyanshumitrapm" target="_blank"><i class="fa-brands fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/priyanshu-mitra-068a36348" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="mailto:priyanshumitra85@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://github.com/priyanshumitrapm" target="_blank" rel="noopener" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/priyanshu-mitra-068a36348" target="_blank" rel="noopener" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="mailto:priyanshumitra85@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
         </div>
-        
-        <p style="margin-top: 50px; font-size: 0.8rem; color: #555; letter-spacing: 1px; text-transform: uppercase;">
-            © 2024 Priyanshu Mitra | IEM Kolkata
+
+        <p style="margin-top: 50px; font-size: 0.8rem; color: var(--footer-text); letter-spacing: 1px; text-transform: uppercase;">
+            © 2026 Priyanshu Mitra | IEM Kolkata
         </p>
     </div>
 </div>
